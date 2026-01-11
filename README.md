@@ -4,7 +4,7 @@
 
 | Week | Date | Lecture 1 | Lecture 2 | Lab | Learning Objectives |
 |:----:|:----:|:----------|:----------|:----|:--------------------|
-| **1** | 1/12–1/16 | [Introduction to Experimental Design](lecture01_week01.html) | Lecture 2: R, VS Code, Quarto, and AI Tools | Lab Materials | Explain why experimental design is critical; describe principles of experimentation; set up R/RStudio; create first Quarto document |
+| **1** | 1/12–1/16 | [Introduction to Experimental Design](https://samuelbfernandes.github.io/agst50104-lectures/lecture01_week01.html) | Lecture 2: R, VS Code, Quarto, and AI Tools | Lab Materials | Explain why experimental design is critical; describe principles of experimentation; set up R/RStudio; create first Quarto document |
 | **2** | 1/21–1/23 | Completely Randomized Design (CRD) | CRD Analysis with R | Lab Materials | Formulate CRD models; verify assumptions; perform post-hoc tests with emmeans |
 | **3** | 1/26–1/30 | Orthogonal Contrasts and Power Analysis | Randomized Complete Block Design (RCBD) Part 1 | Lab Materials | Construct orthogonal contrasts; conduct power analysis; explain blocking principles; design RCBD experiments |
 | **4** | 2/2–2/6 | RCBD Part 2 and Diagnostics | RCBD Analysis Examples | Lab Materials | Estimate missing plots; perform Tukey additivity test; analyze real agricultural trials |
