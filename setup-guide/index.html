@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Complete Setup Guide for AGST 50104</title>
+  <meta name="description" content="A visual, step-by-step guide for students with no prior experience in R, RStudio, or VSCode to set up their computing environment for experimental design coursework." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Complete Setup Guide for AGST 50104" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="A visual, step-by-step guide for students with no prior experience in R, RStudio, or VSCode to set up their computing environment for experimental design coursework." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Complete Setup Guide for AGST 50104" />
+  
+  <meta name="twitter:description" content="A visual, step-by-step guide for students with no prior experience in R, RStudio, or VSCode to set up their computing environment for experimental design coursework." />
+  
+
+<meta name="author" content="Dr. Samuel B Fernandes" />
+
+
+<meta name="date" content="2026-01-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="prerequisites.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">AGST 50104 Setup Guide</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#what-youll-learn"><i class="fa fa-check"></i>What You’ll Learn</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#how-to-use-this-guide"><i class="fa fa-check"></i>How to Use This Guide</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#system-requirements"><i class="fa fa-check"></i>System Requirements</a>
+<ul>
+<li class="chapter" data-level="0.0.1" data-path="index.html"><a href="index.html#windows-users"><i class="fa fa-check"></i><b>0.0.1</b> Windows Users</a></li>
+<li class="chapter" data-level="0.0.2" data-path="index.html"><a href="index.html#macos-users"><i class="fa fa-check"></i><b>0.0.2</b> macOS Users</a></li>
+<li class="chapter" data-level="0.0.3" data-path="index.html"><a href="index.html#linux-users"><i class="fa fa-check"></i><b>0.0.3</b> Linux Users</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#estimated-time"><i class="fa fa-check"></i>Estimated Time</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="prerequisites.html"><a href="prerequisites.html"><i class="fa fa-check"></i><b>1</b> Prerequisites and Overview</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="prerequisites.html"><a href="prerequisites.html#the-big-picture"><i class="fa fa-check"></i><b>1.1</b> The Big Picture</a></li>
+<li class="chapter" data-level="1.2" data-path="prerequisites.html"><a href="prerequisites.html#what-is-r"><i class="fa fa-check"></i><b>1.2</b> What is R?</a></li>
+<li class="chapter" data-level="1.3" data-path="prerequisites.html"><a href="prerequisites.html#what-is-rstudio"><i class="fa fa-check"></i><b>1.3</b> What is RStudio?</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="prerequisites.html"><a href="prerequisites.html#why-use-rstudio"><i class="fa fa-check"></i><b>1.3.1</b> Why Use RStudio?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="prerequisites.html"><a href="prerequisites.html#what-is-vscode"><i class="fa fa-check"></i><b>1.4</b> What is VSCode?</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="prerequisites.html"><a href="prerequisites.html#why-use-vscode-for-this-course"><i class="fa fa-check"></i><b>1.4.1</b> Why Use VSCode for This Course?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="prerequisites.html"><a href="prerequisites.html#what-is-quarto"><i class="fa fa-check"></i><b>1.5</b> What is Quarto?</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="prerequisites.html"><a href="prerequisites.html#why-use-quarto-in-this-course"><i class="fa fa-check"></i><b>1.5.1</b> Why Use Quarto in This Course?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="prerequisites.html"><a href="prerequisites.html#what-is-github"><i class="fa fa-check"></i><b>1.6</b> What is GitHub?</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="prerequisites.html"><a href="prerequisites.html#why-use-github-in-this-course"><i class="fa fa-check"></i><b>1.6.1</b> Why Use GitHub in This Course?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="prerequisites.html"><a href="prerequisites.html#what-is-github-copilot"><i class="fa fa-check"></i><b>1.7</b> What is GitHub Copilot?</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="prerequisites.html"><a href="prerequisites.html#example-copilot-in-action"><i class="fa fa-check"></i><b>1.7.1</b> Example: Copilot in Action</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="prerequisites.html"><a href="prerequisites.html#summary-what-were-installing"><i class="fa fa-check"></i><b>1.8</b> Summary: What We’re Installing</a></li>
+<li class="chapter" data-level="1.9" data-path="prerequisites.html"><a href="prerequisites.html#ready-to-start"><i class="fa fa-check"></i><b>1.9</b> Ready to Start?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="github-account.html"><a href="github-account.html"><i class="fa fa-check"></i><b>2</b> Creating Your GitHub Account</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="github-account.html"><a href="github-account.html#step-1-go-to-githubs-website"><i class="fa fa-check"></i><b>2.1</b> Step 1: Go to GitHub’s Website</a></li>
+<li class="chapter" data-level="2.2" data-path="github-account.html"><a href="github-account.html#step-2-sign-up-for-an-account"><i class="fa fa-check"></i><b>2.2</b> Step 2: Sign Up for an Account</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="github-account.html"><a href="github-account.html#fill-out-the-sign-up-form"><i class="fa fa-check"></i><b>2.2.1</b> Fill Out the Sign-Up Form</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="github-account.html"><a href="github-account.html#step-3-verify-your-email"><i class="fa fa-check"></i><b>2.3</b> Step 3: Verify Your Email</a></li>
+<li class="chapter" data-level="2.4" data-path="github-account.html"><a href="github-account.html#step-4-customize-your-experience-optional"><i class="fa fa-check"></i><b>2.4</b> Step 4: Customize Your Experience (Optional)</a></li>
+<li class="chapter" data-level="2.5" data-path="github-account.html"><a href="github-account.html#step-5-explore-your-new-github-account"><i class="fa fa-check"></i><b>2.5</b> Step 5: Explore Your New GitHub Account</a></li>
+<li class="chapter" data-level="2.6" data-path="github-account.html"><a href="github-account.html#step-6-apply-for-github-student-benefits"><i class="fa fa-check"></i><b>2.6</b> Step 6: Apply for GitHub Student Benefits</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="github-account.html"><a href="github-account.html#navigate-to-github-education"><i class="fa fa-check"></i><b>2.6.1</b> 6.1 Navigate to GitHub Education</a></li>
+<li class="chapter" data-level="2.6.2" data-path="github-account.html"><a href="github-account.html#apply-for-student-benefits"><i class="fa fa-check"></i><b>2.6.2</b> 6.2 Apply for Student Benefits</a></li>
+<li class="chapter" data-level="2.6.3" data-path="github-account.html"><a href="github-account.html#wait-for-approval"><i class="fa fa-check"></i><b>2.6.3</b> 6.3 Wait for Approval</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="github-account.html"><a href="github-account.html#step-7-confirm-github-copilot-access"><i class="fa fa-check"></i><b>2.7</b> Step 7: Confirm GitHub Copilot Access</a></li>
+<li class="chapter" data-level="2.8" data-path="github-account.html"><a href="github-account.html#video-tutorial-creating-a-github-account"><i class="fa fa-check"></i><b>2.8</b> Video Tutorial: Creating a GitHub Account</a></li>
+<li class="chapter" data-level="2.9" data-path="github-account.html"><a href="github-account.html#summary-checklist"><i class="fa fa-check"></i><b>2.9</b> Summary Checklist</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vscode-install.html"><a href="vscode-install.html"><i class="fa fa-check"></i><b>3</b> Installing Visual Studio Code</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="vscode-install.html"><a href="vscode-install.html#step-1-download-vscode"><i class="fa fa-check"></i><b>3.1</b> Step 1: Download VSCode</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="vscode-install.html"><a href="vscode-install.html#for-windows-users"><i class="fa fa-check"></i><b>3.1.1</b> For Windows Users</a></li>
+<li class="chapter" data-level="3.1.2" data-path="vscode-install.html"><a href="vscode-install.html#for-macos-users"><i class="fa fa-check"></i><b>3.1.2</b> For macOS Users</a></li>
+<li class="chapter" data-level="3.1.3" data-path="vscode-install.html"><a href="vscode-install.html#for-linux-users"><i class="fa fa-check"></i><b>3.1.3</b> For Linux Users</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="vscode-install.html"><a href="vscode-install.html#step-2-install-vscode"><i class="fa fa-check"></i><b>3.2</b> Step 2: Install VSCode</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="vscode-install.html"><a href="vscode-install.html#windows-installation"><i class="fa fa-check"></i><b>3.2.1</b> Windows Installation</a></li>
+<li class="chapter" data-level="3.2.2" data-path="vscode-install.html"><a href="vscode-install.html#macos-installation"><i class="fa fa-check"></i><b>3.2.2</b> macOS Installation</a></li>
+<li class="chapter" data-level="3.2.3" data-path="vscode-install.html"><a href="vscode-install.html#linux-installation-debianubuntu"><i class="fa fa-check"></i><b>3.2.3</b> Linux Installation (Debian/Ubuntu)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="vscode-install.html"><a href="vscode-install.html#step-3-first-launch-and-welcome-screen"><i class="fa fa-check"></i><b>3.3</b> Step 3: First Launch and Welcome Screen</a></li>
+<li class="chapter" data-level="3.4" data-path="vscode-install.html"><a href="vscode-install.html#step-4-install-essential-extensions"><i class="fa fa-check"></i><b>3.4</b> Step 4: Install Essential Extensions</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="vscode-install.html"><a href="vscode-install.html#open-the-extensions-view"><i class="fa fa-check"></i><b>3.4.1</b> 4.1 Open the Extensions View</a></li>
+<li class="chapter" data-level="3.4.2" data-path="vscode-install.html"><a href="vscode-install.html#install-the-r-extension"><i class="fa fa-check"></i><b>3.4.2</b> 4.2 Install the R Extension</a></li>
+<li class="chapter" data-level="3.4.3" data-path="vscode-install.html"><a href="vscode-install.html#install-the-quarto-extension"><i class="fa fa-check"></i><b>3.4.3</b> 4.3 Install the Quarto Extension</a></li>
+<li class="chapter" data-level="3.4.4" data-path="vscode-install.html"><a href="vscode-install.html#install-github-copilot-extension"><i class="fa fa-check"></i><b>3.4.4</b> 4.4 Install GitHub Copilot Extension</a></li>
+<li class="chapter" data-level="3.4.5" data-path="vscode-install.html"><a href="vscode-install.html#install-github-copilot-chat-extension"><i class="fa fa-check"></i><b>3.4.5</b> 4.5 Install GitHub Copilot Chat Extension</a></li>
+<li class="chapter" data-level="3.4.6" data-path="vscode-install.html"><a href="vscode-install.html#install-python-extension-optional-but-recommended"><i class="fa fa-check"></i><b>3.4.6</b> 4.6 Install Python Extension (Optional but Recommended)</a></li>
+<li class="chapter" data-level="3.4.7" data-path="vscode-install.html"><a href="vscode-install.html#install-additional-helpful-extensions"><i class="fa fa-check"></i><b>3.4.7</b> 4.7 Install Additional Helpful Extensions</a></li>
+<li class="chapter" data-level="3.4.8" data-path="vscode-install.html"><a href="vscode-install.html#summary-extensions-you-should-have"><i class="fa fa-check"></i><b>3.4.8</b> Summary: Extensions You Should Have</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="vscode-install.html"><a href="vscode-install.html#step-5-configure-vscode-settings"><i class="fa fa-check"></i><b>3.5</b> Step 5: Configure VSCode Settings</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="vscode-install.html"><a href="vscode-install.html#open-settings"><i class="fa fa-check"></i><b>3.5.1</b> 5.1 Open Settings</a></li>
+<li class="chapter" data-level="3.5.2" data-path="vscode-install.html"><a href="vscode-install.html#recommended-settings"><i class="fa fa-check"></i><b>3.5.2</b> 5.2 Recommended Settings</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="vscode-install.html"><a href="vscode-install.html#step-6-test-your-vscode-setup"><i class="fa fa-check"></i><b>3.6</b> Step 6: Test Your VSCode Setup</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="vscode-install.html"><a href="vscode-install.html#create-a-test-r-script"><i class="fa fa-check"></i><b>3.6.1</b> 6.1 Create a Test R Script</a></li>
+<li class="chapter" data-level="3.6.2" data-path="vscode-install.html"><a href="vscode-install.html#run-the-r-code-well-set-up-r-in-chapter-4"><i class="fa fa-check"></i><b>3.6.2</b> 6.2 Run the R Code (We’ll set up R in Chapter 4!)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="vscode-install.html"><a href="vscode-install.html#video-tutorial-installing-and-setting-up-vscode"><i class="fa fa-check"></i><b>3.7</b> Video Tutorial: Installing and Setting Up VSCode</a></li>
+<li class="chapter" data-level="3.8" data-path="vscode-install.html"><a href="vscode-install.html#summary-checklist-1"><i class="fa fa-check"></i><b>3.8</b> Summary Checklist</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="posit-cloud.html"><a href="posit-cloud.html"><i class="fa fa-check"></i><b>4</b> Posit Cloud: Cloud-Based R Development</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="posit-cloud.html"><a href="posit-cloud.html#cloud-benefits"><i class="fa fa-check"></i><b>4.1</b> Why Posit Cloud?</a></li>
+<li class="chapter" data-level="4.2" data-path="posit-cloud.html"><a href="posit-cloud.html#step-1-create-a-posit-cloud-account"><i class="fa fa-check"></i><b>4.2</b> Step 1: Create a Posit Cloud Account</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="posit-cloud.html"><a href="posit-cloud.html#go-to-posit-cloud"><i class="fa fa-check"></i><b>4.2.1</b> 1.1: Go to Posit Cloud</a></li>
+<li class="chapter" data-level="4.2.2" data-path="posit-cloud.html"><a href="posit-cloud.html#sign-up"><i class="fa fa-check"></i><b>4.2.2</b> 1.2: Sign Up</a></li>
+<li class="chapter" data-level="4.2.3" data-path="posit-cloud.html"><a href="posit-cloud.html#complete-your-profile"><i class="fa fa-check"></i><b>4.2.3</b> 1.3: Complete Your Profile</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="posit-cloud.html"><a href="posit-cloud.html#step-2-access-the-posit-cloud-ide"><i class="fa fa-check"></i><b>4.3</b> Step 2: Access the Posit Cloud IDE</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="posit-cloud.html"><a href="posit-cloud.html#log-into-your-workspace"><i class="fa fa-check"></i><b>4.3.1</b> 2.1: Log Into Your Workspace</a></li>
+<li class="chapter" data-level="4.3.2" data-path="posit-cloud.html"><a href="posit-cloud.html#create-your-first-project"><i class="fa fa-check"></i><b>4.3.2</b> 2.2: Create Your First Project</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="posit-cloud.html"><a href="posit-cloud.html#step-3-create-your-first-quarto-document"><i class="fa fa-check"></i><b>4.4</b> Step 3: Create Your First Quarto Document</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="posit-cloud.html"><a href="posit-cloud.html#create-a-new-quarto-document"><i class="fa fa-check"></i><b>4.4.1</b> 3.1: Create a New Quarto Document</a></li>
+<li class="chapter" data-level="4.4.2" data-path="posit-cloud.html"><a href="posit-cloud.html#explore-the-editor"><i class="fa fa-check"></i><b>4.4.2</b> 3.2: Explore the Editor</a></li>
+<li class="chapter" data-level="4.4.3" data-path="posit-cloud.html"><a href="posit-cloud.html#render-your-first-document"><i class="fa fa-check"></i><b>4.4.3</b> 3.3: Render Your First Document</a></li>
+<li class="chapter" data-level="4.4.4" data-path="posit-cloud.html"><a href="posit-cloud.html#save-your-work"><i class="fa fa-check"></i><b>4.4.4</b> 3.4: Save Your Work</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="posit-cloud.html"><a href="posit-cloud.html#step-4-explore-the-posit-cloud-interface"><i class="fa fa-check"></i><b>4.5</b> Step 4: Explore the Posit Cloud Interface</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="posit-cloud.html"><a href="posit-cloud.html#your-dashboard"><i class="fa fa-check"></i><b>4.5.1</b> 4.1: Your Dashboard</a></li>
+<li class="chapter" data-level="4.5.2" data-path="posit-cloud.html"><a href="posit-cloud.html#project-settings"><i class="fa fa-check"></i><b>4.5.2</b> 4.2: Project Settings</a></li>
+<li class="chapter" data-level="4.5.3" data-path="posit-cloud.html"><a href="posit-cloud.html#console-and-packages"><i class="fa fa-check"></i><b>4.5.3</b> 4.3: Console and Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="posit-cloud.html"><a href="posit-cloud.html#comparison-posit-cloud-vs.-local-rstudio"><i class="fa fa-check"></i><b>4.6</b> Comparison: Posit Cloud vs. Local RStudio</a></li>
+<li class="chapter" data-level="4.7" data-path="posit-cloud.html"><a href="posit-cloud.html#step-5-running-r-code-in-posit-cloud"><i class="fa fa-check"></i><b>4.7</b> Step 5: Running R Code in Posit Cloud</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="posit-cloud.html"><a href="posit-cloud.html#console-execution"><i class="fa fa-check"></i><b>4.7.1</b> 5.1: Console Execution</a></li>
+<li class="chapter" data-level="4.7.2" data-path="posit-cloud.html"><a href="posit-cloud.html#script-execution"><i class="fa fa-check"></i><b>4.7.2</b> 5.2: Script Execution</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="posit-cloud.html"><a href="posit-cloud.html#step-6-tips-and-tricks-for-posit-cloud"><i class="fa fa-check"></i><b>4.8</b> Step 6: Tips and Tricks for Posit Cloud</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="posit-cloud.html"><a href="posit-cloud.html#managing-your-monthly-hours"><i class="fa fa-check"></i><b>4.8.1</b> Managing Your Monthly Hours</a></li>
+<li class="chapter" data-level="4.8.2" data-path="posit-cloud.html"><a href="posit-cloud.html#uploading-data-files"><i class="fa fa-check"></i><b>4.8.2</b> Uploading Data Files</a></li>
+<li class="chapter" data-level="4.8.3" data-path="posit-cloud.html"><a href="posit-cloud.html#installing-packages"><i class="fa fa-check"></i><b>4.8.3</b> Installing Packages</a></li>
+<li class="chapter" data-level="4.8.4" data-path="posit-cloud.html"><a href="posit-cloud.html#downloading-your-work"><i class="fa fa-check"></i><b>4.8.4</b> Downloading Your Work</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="posit-cloud.html"><a href="posit-cloud.html#deciding-posit-cloud-or-local-rstudio"><i class="fa fa-check"></i><b>4.9</b> Deciding: Posit Cloud or Local RStudio?</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="posit-cloud.html"><a href="posit-cloud.html#use-posit-cloud-if"><i class="fa fa-check"></i><b>4.9.1</b> Use Posit Cloud If:</a></li>
+<li class="chapter" data-level="4.9.2" data-path="posit-cloud.html"><a href="posit-cloud.html#install-local-rstudio-if"><i class="fa fa-check"></i><b>4.9.2</b> Install Local RStudio If:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="posit-cloud.html"><a href="posit-cloud.html#troubleshooting"><i class="fa fa-check"></i><b>4.10</b> Troubleshooting</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="posit-cloud.html"><a href="posit-cloud.html#workspace-is-loading-please-wait"><i class="fa fa-check"></i><b>4.10.1</b> “Workspace is loading… please wait”</a></li>
+<li class="chapter" data-level="4.10.2" data-path="posit-cloud.html"><a href="posit-cloud.html#not-enough-compute-hours"><i class="fa fa-check"></i><b>4.10.2</b> “Not enough compute hours”</a></li>
+<li class="chapter" data-level="4.10.3" data-path="posit-cloud.html"><a href="posit-cloud.html#cant-render-quarto-document"><i class="fa fa-check"></i><b>4.10.3</b> “Can’t render Quarto document”</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="posit-cloud.html"><a href="posit-cloud.html#summary-checklist-2"><i class="fa fa-check"></i><b>4.11</b> Summary Checklist</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="rstudio-install.html"><a href="rstudio-install.html"><i class="fa fa-check"></i><b>5</b> Installing RStudio and R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="rstudio-install.html"><a href="rstudio-install.html#part-1-installing-r"><i class="fa fa-check"></i><b>5.1</b> Part 1: Installing R</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="rstudio-install.html"><a href="rstudio-install.html#step-1.1-download-r"><i class="fa fa-check"></i><b>5.1.1</b> Step 1.1: Download R</a></li>
+<li class="chapter" data-level="5.1.2" data-path="rstudio-install.html"><a href="rstudio-install.html#step-1.2-install-r"><i class="fa fa-check"></i><b>5.1.2</b> Step 1.2: Install R</a></li>
+<li class="chapter" data-level="5.1.3" data-path="rstudio-install.html"><a href="rstudio-install.html#step-1.3-verify-r-installation"><i class="fa fa-check"></i><b>5.1.3</b> Step 1.3: Verify R Installation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="rstudio-install.html"><a href="rstudio-install.html#part-2-installing-rstudio"><i class="fa fa-check"></i><b>5.2</b> Part 2: Installing RStudio</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="rstudio-install.html"><a href="rstudio-install.html#step-2.1-download-rstudio-desktop"><i class="fa fa-check"></i><b>5.2.1</b> Step 2.1: Download RStudio Desktop</a></li>
+<li class="chapter" data-level="5.2.2" data-path="rstudio-install.html"><a href="rstudio-install.html#step-2.2-install-rstudio"><i class="fa fa-check"></i><b>5.2.2</b> Step 2.2: Install RStudio</a></li>
+<li class="chapter" data-level="5.2.3" data-path="rstudio-install.html"><a href="rstudio-install.html#step-2.3-first-launch-of-rstudio"><i class="fa fa-check"></i><b>5.2.3</b> Step 2.3: First Launch of RStudio</a></li>
+<li class="chapter" data-level="5.2.4" data-path="rstudio-install.html"><a href="rstudio-install.html#step-2.4-test-rstudio"><i class="fa fa-check"></i><b>5.2.4</b> Step 2.4: Test RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="rstudio-install.html"><a href="rstudio-install.html#step-3-configure-rstudio-settings"><i class="fa fa-check"></i><b>5.3</b> Step 3: Configure RStudio Settings</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="rstudio-install.html"><a href="rstudio-install.html#open-global-options"><i class="fa fa-check"></i><b>5.3.1</b> 3.1 Open Global Options</a></li>
+<li class="chapter" data-level="5.3.2" data-path="rstudio-install.html"><a href="rstudio-install.html#recommended-settings-1"><i class="fa fa-check"></i><b>5.3.2</b> 3.2 Recommended Settings</a></li>
+<li class="chapter" data-level="5.3.3" data-path="rstudio-install.html"><a href="rstudio-install.html#click-ok-to-save-settings"><i class="fa fa-check"></i><b>5.3.3</b> 3.3 Click “OK” to Save Settings</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="rstudio-install.html"><a href="rstudio-install.html#step-4-install-essential-r-packages"><i class="fa fa-check"></i><b>5.4</b> Step 4: Install Essential R Packages</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="rstudio-install.html"><a href="rstudio-install.html#install-tidyverse"><i class="fa fa-check"></i><b>5.4.1</b> 4.1 Install Tidyverse</a></li>
+<li class="chapter" data-level="5.4.2" data-path="rstudio-install.html"><a href="rstudio-install.html#install-additional-course-packages"><i class="fa fa-check"></i><b>5.4.2</b> 4.2 Install Additional Course Packages</a></li>
+<li class="chapter" data-level="5.4.3" data-path="rstudio-install.html"><a href="rstudio-install.html#verify-package-installation"><i class="fa fa-check"></i><b>5.4.3</b> 4.3 Verify Package Installation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="rstudio-install.html"><a href="rstudio-install.html#video-tutorial-installing-r-and-rstudio"><i class="fa fa-check"></i><b>5.5</b> Video Tutorial: Installing R and RStudio</a></li>
+<li class="chapter" data-level="5.6" data-path="rstudio-install.html"><a href="rstudio-install.html#summary-checklist-3"><i class="fa fa-check"></i><b>5.6</b> Summary Checklist</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="quarto-setup.html"><a href="quarto-setup.html"><i class="fa fa-check"></i><b>6</b> Installing and Configuring Quarto</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="quarto-setup.html"><a href="quarto-setup.html#what-is-quarto-1"><i class="fa fa-check"></i><b>6.1</b> What is Quarto?</a></li>
+<li class="chapter" data-level="6.2" data-path="quarto-setup.html"><a href="quarto-setup.html#step-1-download-quarto"><i class="fa fa-check"></i><b>6.2</b> Step 1: Download Quarto</a></li>
+<li class="chapter" data-level="6.3" data-path="quarto-setup.html"><a href="quarto-setup.html#step-2-install-quarto"><i class="fa fa-check"></i><b>6.3</b> Step 2: Install Quarto</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="quarto-setup.html"><a href="quarto-setup.html#windows-installation-3"><i class="fa fa-check"></i><b>6.3.1</b> Windows Installation</a></li>
+<li class="chapter" data-level="6.3.2" data-path="quarto-setup.html"><a href="quarto-setup.html#macos-installation-3"><i class="fa fa-check"></i><b>6.3.2</b> macOS Installation</a></li>
+<li class="chapter" data-level="6.3.3" data-path="quarto-setup.html"><a href="quarto-setup.html#linux-installation-ubuntudebian"><i class="fa fa-check"></i><b>6.3.3</b> Linux Installation (Ubuntu/Debian)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="quarto-setup.html"><a href="quarto-setup.html#step-3-verify-quarto-installation"><i class="fa fa-check"></i><b>6.4</b> Step 3: Verify Quarto Installation</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="quarto-setup.html"><a href="quarto-setup.html#verify-in-terminalcommand-prompt"><i class="fa fa-check"></i><b>6.4.1</b> Verify in Terminal/Command Prompt</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="quarto-setup.html"><a href="quarto-setup.html#step-4-configure-quarto-in-rstudio"><i class="fa fa-check"></i><b>6.5</b> Step 4: Configure Quarto in RStudio</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="quarto-setup.html"><a href="quarto-setup.html#check-quarto-is-detected"><i class="fa fa-check"></i><b>6.5.1</b> 4.1 Check Quarto is Detected</a></li>
+<li class="chapter" data-level="6.5.2" data-path="quarto-setup.html"><a href="quarto-setup.html#create-your-first-quarto-document-in-rstudio"><i class="fa fa-check"></i><b>6.5.2</b> 4.2 Create Your First Quarto Document in RStudio</a></li>
+<li class="chapter" data-level="6.5.3" data-path="quarto-setup.html"><a href="quarto-setup.html#render-the-document"><i class="fa fa-check"></i><b>6.5.3</b> 4.3 Render the Document</a></li>
+<li class="chapter" data-level="6.5.4" data-path="quarto-setup.html"><a href="quarto-setup.html#explore-the-quarto-document-structure"><i class="fa fa-check"></i><b>6.5.4</b> 4.4 Explore the Quarto Document Structure</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="quarto-setup.html"><a href="quarto-setup.html#step-5-configure-quarto-in-vscode"><i class="fa fa-check"></i><b>6.6</b> Step 5: Configure Quarto in VSCode</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="quarto-setup.html"><a href="quarto-setup.html#verify-quarto-extension-is-installed"><i class="fa fa-check"></i><b>6.6.1</b> 5.1 Verify Quarto Extension is Installed</a></li>
+<li class="chapter" data-level="6.6.2" data-path="quarto-setup.html"><a href="quarto-setup.html#create-your-first-quarto-document-in-vscode"><i class="fa fa-check"></i><b>6.6.2</b> 5.2 Create Your First Quarto Document in VSCode</a></li>
+<li class="chapter" data-level="6.6.3" data-path="quarto-setup.html"><a href="quarto-setup.html#render-the-document-in-vscode"><i class="fa fa-check"></i><b>6.6.3</b> 5.3 Render the Document in VSCode</a></li>
+<li class="chapter" data-level="6.6.4" data-path="quarto-setup.html"><a href="quarto-setup.html#view-the-rendered-output"><i class="fa fa-check"></i><b>6.6.4</b> 5.4 View the Rendered Output</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="quarto-setup.html"><a href="quarto-setup.html#step-6-quarto-output-formats"><i class="fa fa-check"></i><b>6.7</b> Step 6: Quarto Output Formats</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="quarto-setup.html"><a href="quarto-setup.html#pdf-output-requires-latex"><i class="fa fa-check"></i><b>6.7.1</b> PDF Output (requires LaTeX)</a></li>
+<li class="chapter" data-level="6.7.2" data-path="quarto-setup.html"><a href="quarto-setup.html#word-document-output"><i class="fa fa-check"></i><b>6.7.2</b> Word Document Output</a></li>
+<li class="chapter" data-level="6.7.3" data-path="quarto-setup.html"><a href="quarto-setup.html#revealjs-presentation-slides"><i class="fa fa-check"></i><b>6.7.3</b> RevealJS Presentation Slides</a></li>
+<li class="chapter" data-level="6.7.4" data-path="quarto-setup.html"><a href="quarto-setup.html#multiple-formats-at-once"><i class="fa fa-check"></i><b>6.7.4</b> Multiple Formats at Once</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="quarto-setup.html"><a href="quarto-setup.html#video-tutorial-getting-started-with-quarto"><i class="fa fa-check"></i><b>6.8</b> Video Tutorial: Getting Started with Quarto</a></li>
+<li class="chapter" data-level="6.9" data-path="quarto-setup.html"><a href="quarto-setup.html#summary-checklist-4"><i class="fa fa-check"></i><b>6.9</b> Summary Checklist</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ahpcc.html"><a href="ahpcc.html"><i class="fa fa-check"></i><b>7</b> AHPCC: Arkansas High Performance Computing Cluster</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ahpcc.html"><a href="ahpcc.html#ahpcc-overview"><i class="fa fa-check"></i><b>7.1</b> What is AHPCC?</a></li>
+<li class="chapter" data-level="7.2" data-path="ahpcc.html"><a href="ahpcc.html#why-you-have-ahpcc-access"><i class="fa fa-check"></i><b>7.2</b> Why You Have AHPCC Access</a></li>
+<li class="chapter" data-level="7.3" data-path="ahpcc.html"><a href="ahpcc.html#step-1-verify-your-ahpcc-account"><i class="fa fa-check"></i><b>7.3</b> Step 1: Verify Your AHPCC Account</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="ahpcc.html"><a href="ahpcc.html#access-the-ahpcc-portal"><i class="fa fa-check"></i><b>7.3.1</b> 1.1: Access the AHPCC Portal</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ahpcc.html"><a href="ahpcc.html#log-in"><i class="fa fa-check"></i><b>7.3.2</b> 1.2: Log In</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ahpcc.html"><a href="ahpcc.html#step-2-navigate-the-ahpcc-portal"><i class="fa fa-check"></i><b>7.4</b> Step 2: Navigate the AHPCC Portal</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="ahpcc.html"><a href="ahpcc.html#portal-dashboard"><i class="fa fa-check"></i><b>7.4.1</b> 2.1: Portal Dashboard</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="ahpcc.html"><a href="ahpcc.html#access-rstudio-ahpcc"><i class="fa fa-check"></i><b>7.5</b> Step 3: Access RStudio on AHPCC</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="ahpcc.html"><a href="ahpcc.html#launch-interactive-rstudio"><i class="fa fa-check"></i><b>7.5.1</b> 3.1: Launch Interactive RStudio</a></li>
+<li class="chapter" data-level="7.5.2" data-path="ahpcc.html"><a href="ahpcc.html#wait-for-rstudio-to-boot"><i class="fa fa-check"></i><b>7.5.2</b> 3.2: Wait for RStudio to Boot</a></li>
+<li class="chapter" data-level="7.5.3" data-path="ahpcc.html"><a href="ahpcc.html#using-ahpcc-rstudio"><i class="fa fa-check"></i><b>7.5.3</b> 3.3: Using AHPCC RStudio</a></li>
+<li class="chapter" data-level="7.5.4" data-path="ahpcc.html"><a href="ahpcc.html#end-your-session"><i class="fa fa-check"></i><b>7.5.4</b> 3.4: End Your Session</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="ahpcc.html"><a href="ahpcc.html#step-4-command-line-access-advanced"><i class="fa fa-check"></i><b>7.6</b> Step 4: Command-Line Access (Advanced)</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="ahpcc.html"><a href="ahpcc.html#ssh-access"><i class="fa fa-check"></i><b>7.6.1</b> 4.1: SSH Access</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="ahpcc.html"><a href="ahpcc.html#step-5-submit-batch-jobs-advanced"><i class="fa fa-check"></i><b>7.7</b> Step 5: Submit Batch Jobs (Advanced)</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="ahpcc.html"><a href="ahpcc.html#create-an-r-script"><i class="fa fa-check"></i><b>7.7.1</b> 5.1: Create an R Script</a></li>
+<li class="chapter" data-level="7.7.2" data-path="ahpcc.html"><a href="ahpcc.html#create-a-slurm-job-script"><i class="fa fa-check"></i><b>7.7.2</b> 5.2: Create a SLURM Job Script</a></li>
+<li class="chapter" data-level="7.7.3" data-path="ahpcc.html"><a href="ahpcc.html#submit-the-job"><i class="fa fa-check"></i><b>7.7.3</b> 5.3: Submit the Job</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="ahpcc.html"><a href="ahpcc.html#troubleshooting-ahpcc-access"><i class="fa fa-check"></i><b>7.8</b> Troubleshooting AHPCC Access</a>
+<ul>
+<li class="chapter" data-level="7.8.1" data-path="ahpcc.html"><a href="ahpcc.html#rstudio-wont-launch"><i class="fa fa-check"></i><b>7.8.1</b> “RStudio Won’t Launch”</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="ahpcc.html"><a href="ahpcc.html#ahpcc-resources-and-documentation"><i class="fa fa-check"></i><b>7.9</b> AHPCC Resources and Documentation</a></li>
+<li class="chapter" data-level="7.10" data-path="ahpcc.html"><a href="ahpcc.html#when-to-use-each-platform"><i class="fa fa-check"></i><b>7.10</b> When to Use Each Platform</a></li>
+<li class="chapter" data-level="7.11" data-path="ahpcc.html"><a href="ahpcc.html#summary-checklist-5"><i class="fa fa-check"></i><b>7.11</b> Summary Checklist</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="github-copilot.html"><a href="github-copilot.html"><i class="fa fa-check"></i><b>8</b> Setting Up GitHub Copilot</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="github-copilot.html"><a href="github-copilot.html#prerequisites-1"><i class="fa fa-check"></i><b>8.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="8.2" data-path="github-copilot.html"><a href="github-copilot.html#part-1-setting-up-copilot-in-vscode"><i class="fa fa-check"></i><b>8.2</b> Part 1: Setting Up Copilot in VSCode</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="github-copilot.html"><a href="github-copilot.html#step-1.1-sign-in-to-github-copilot"><i class="fa fa-check"></i><b>8.2.1</b> Step 1.1: Sign In to GitHub Copilot</a></li>
+<li class="chapter" data-level="8.2.2" data-path="github-copilot.html"><a href="github-copilot.html#step-1.2-authorize-vscode-with-github"><i class="fa fa-check"></i><b>8.2.2</b> Step 1.2: Authorize VSCode with GitHub</a></li>
+<li class="chapter" data-level="8.2.3" data-path="github-copilot.html"><a href="github-copilot.html#step-1.3-verify-copilot-is-active"><i class="fa fa-check"></i><b>8.2.3</b> Step 1.3: Verify Copilot is Active</a></li>
+<li class="chapter" data-level="8.2.4" data-path="github-copilot.html"><a href="github-copilot.html#step-1.4-test-copilot-in-vscode"><i class="fa fa-check"></i><b>8.2.4</b> Step 1.4: Test Copilot in VSCode</a></li>
+<li class="chapter" data-level="8.2.5" data-path="github-copilot.html"><a href="github-copilot.html#step-1.5-using-github-copilot-chat"><i class="fa fa-check"></i><b>8.2.5</b> Step 1.5: Using GitHub Copilot Chat</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="github-copilot.html"><a href="github-copilot.html#part-2-setting-up-copilot-in-rstudio"><i class="fa fa-check"></i><b>8.3</b> Part 2: Setting Up Copilot in RStudio</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="github-copilot.html"><a href="github-copilot.html#step-2.1-enable-copilot-in-rstudio"><i class="fa fa-check"></i><b>8.3.1</b> Step 2.1: Enable Copilot in RStudio</a></li>
+<li class="chapter" data-level="8.3.2" data-path="github-copilot.html"><a href="github-copilot.html#step-2.2-sign-in-to-github-copilot"><i class="fa fa-check"></i><b>8.3.2</b> Step 2.2: Sign In to GitHub Copilot</a></li>
+<li class="chapter" data-level="8.3.3" data-path="github-copilot.html"><a href="github-copilot.html#step-2.3-test-copilot-in-rstudio"><i class="fa fa-check"></i><b>8.3.3</b> Step 2.3: Test Copilot in RStudio</a></li>
+<li class="chapter" data-level="8.3.4" data-path="github-copilot.html"><a href="github-copilot.html#step-2.4-additional-copilot-settings-in-rstudio"><i class="fa fa-check"></i><b>8.3.4</b> Step 2.4: Additional Copilot Settings in RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="github-copilot.html"><a href="github-copilot.html#part-3-using-copilot-effectively"><i class="fa fa-check"></i><b>8.4</b> Part 3: Using Copilot Effectively</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="github-copilot.html"><a href="github-copilot.html#best-practices-for-copilot"><i class="fa fa-check"></i><b>8.4.1</b> Best Practices for Copilot</a></li>
+<li class="chapter" data-level="8.4.2" data-path="github-copilot.html"><a href="github-copilot.html#examples-copilot-in-action"><i class="fa fa-check"></i><b>8.4.2</b> Examples: Copilot in Action</a></li>
+<li class="chapter" data-level="8.4.3" data-path="github-copilot.html"><a href="github-copilot.html#asking-questions-with-copilot"><i class="fa fa-check"></i><b>8.4.3</b> Asking Questions with Copilot</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="github-copilot.html"><a href="github-copilot.html#part-4-copilot-limitations-and-ethics"><i class="fa fa-check"></i><b>8.5</b> Part 4: Copilot Limitations and Ethics</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="github-copilot.html"><a href="github-copilot.html#what-copilot-can-do-well"><i class="fa fa-check"></i><b>8.5.1</b> What Copilot Can Do Well</a></li>
+<li class="chapter" data-level="8.5.2" data-path="github-copilot.html"><a href="github-copilot.html#what-copilot-struggles-with"><i class="fa fa-check"></i><b>8.5.2</b> What Copilot Struggles With</a></li>
+<li class="chapter" data-level="8.5.3" data-path="github-copilot.html"><a href="github-copilot.html#academic-integrity"><i class="fa fa-check"></i><b>8.5.3</b> Academic Integrity</a></li>
+<li class="chapter" data-level="8.5.4" data-path="github-copilot.html"><a href="github-copilot.html#privacy-and-data"><i class="fa fa-check"></i><b>8.5.4</b> Privacy and Data</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="github-copilot.html"><a href="github-copilot.html#video-tutorial-using-github-copilot"><i class="fa fa-check"></i><b>8.6</b> Video Tutorial: Using GitHub Copilot</a></li>
+<li class="chapter" data-level="8.7" data-path="github-copilot.html"><a href="github-copilot.html#summary-checklist-6"><i class="fa fa-check"></i><b>8.7</b> Summary Checklist</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Complete Setup Guide for AGST 50104</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Complete Setup Guide for AGST 50104</h1>
+<h2 class="subtitle"><em>Installing VSCode, RStudio, Quarto, and GitHub Copilot</em></h2>
+<p class="author"><em>Dr. Samuel B Fernandes</em></p>
+<p class="date"><em>2026-01-13</em></p>
+</div>
+<div id="welcome" class="section level1 unnumbered hasAnchor">
+<h1>Welcome<a href="index.html#welcome" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="rmdnote">
+<p><strong>Who is this guide for?</strong></p>
+<p>This guide is designed for students in <strong>AGST 50104: Experimental Design</strong> who may have:</p>
+<ul>
+<li>✅ Never used R or RStudio before</li>
+<li>✅ Never used Visual Studio Code (VSCode)</li>
+<li>✅ Limited experience with coding or programming</li>
+<li>✅ Questions about GitHub accounts or GitHub Copilot</li>
+</ul>
+<p><strong>Our goal:</strong> Get you set up with all the tools you need for this course with clear, visual instructions.</p>
+</div>
+<div id="what-youll-learn" class="section level2 unnumbered hasAnchor">
+<h2>What You’ll Learn<a href="index.html#what-youll-learn" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>By the end of this guide, you will have:</p>
+<div class="rmdimportant">
+<ol style="list-style-type: decimal">
+<li>✅ A <strong>GitHub account</strong> (using your .edu email for free benefits)</li>
+<li>✅ <strong>Visual Studio Code (VSCode)</strong> installed and configured</li>
+<li>✅ <strong>Posit Cloud</strong> set up for cloud-based R development</li>
+<li>✅ <strong>RStudio Desktop</strong> installed and configured locally</li>
+<li>✅ <strong>Quarto</strong> installed and working in both IDEs</li>
+<li>✅ <strong>AHPCC</strong> (Arkansas High Performance Computing Cluster) access configured</li>
+<li>✅ <strong>GitHub Copilot</strong> set up for AI-powered coding assistance</li>
+<li>✅ Confidence to start coding in this course!</li>
+</ol>
+</div>
+</div>
+<div id="how-to-use-this-guide" class="section level2 unnumbered hasAnchor">
+<h2>How to Use This Guide<a href="index.html#how-to-use-this-guide" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="rmdtip">
+<p><strong>Pro Tips:</strong></p>
+<ul>
+<li>📖 <strong>Follow chapters in order</strong> — each builds on the previous one</li>
+<li>⏸️ <strong>Pause the embedded videos</strong> to follow along at your own pace</li>
+<li>❓ <strong>Ask for help</strong> if something doesn’t work — reach out via email</li>
+<li>💾 <strong>Bookmark this guide</strong> — you may need to reference it throughout the semester</li>
+</ul>
+</div>
+</div>
+<div id="system-requirements" class="section level2 unnumbered hasAnchor">
+<h2>System Requirements<a href="index.html#system-requirements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Before you begin, make sure your computer meets these minimum requirements:</p>
+<div id="windows-users" class="section level3 hasAnchor" number="0.0.1">
+<h3><span class="header-section-number">0.0.1</span> Windows Users<a href="index.html#windows-users" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>OS</strong>: Windows 10 or newer</li>
+<li><strong>RAM</strong>: 4 GB minimum (8 GB recommended)</li>
+<li><strong>Storage</strong>: 5 GB free space</li>
+<li><strong>Internet</strong>: Stable connection for downloads</li>
+</ul>
+</div>
+<div id="macos-users" class="section level3 hasAnchor" number="0.0.2">
+<h3><span class="header-section-number">0.0.2</span> macOS Users<a href="index.html#macos-users" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>OS</strong>: macOS 11 (Big Sur) or newer</li>
+<li><strong>RAM</strong>: 4 GB minimum (8 GB recommended)</li>
+<li><strong>Storage</strong>: 5 GB free space</li>
+<li><strong>Internet</strong>: Stable connection for downloads</li>
+</ul>
+</div>
+<div id="linux-users" class="section level3 hasAnchor" number="0.0.3">
+<h3><span class="header-section-number">0.0.3</span> Linux Users<a href="index.html#linux-users" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>OS</strong>: Ubuntu 20.04+ / Fedora 35+ / Debian 11+</li>
+<li><strong>RAM</strong>: 4 GB minimum (8 GB recommended)</li>
+<li><strong>Storage</strong>: 5 GB free space</li>
+<li><strong>Internet</strong>: Stable connection for downloads</li>
+</ul>
+<div class="rmdwarning">
+<p><strong>Important:</strong> Some installations require <strong>administrator privileges</strong> on your computer. If you’re using a university-managed computer, you may need to contact IT support.</p>
+</div>
+</div>
+</div>
+<div id="estimated-time" class="section level2 unnumbered hasAnchor">
+<h2>Estimated Time<a href="index.html#estimated-time" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Plan for <strong>1-2 hours</strong> to complete this entire setup, depending on your internet speed and familiarity with software installation.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Chapter</th>
+<th align="left">Task</th>
+<th align="right">Est. Time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">Prerequisites &amp; Overview</td>
+<td align="right">5 min</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">GitHub Account Setup</td>
+<td align="right">10 min</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">VSCode Installation &amp; Setup</td>
+<td align="right">20 min</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">Posit Cloud Setup</td>
+<td align="right">15 min</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">RStudio Installation &amp; Setup</td>
+<td align="right">15 min</td>
+</tr>
+<tr class="even">
+<td align="left">6</td>
+<td align="left">Quarto Installation</td>
+<td align="right">15 min</td>
+</tr>
+<tr class="odd">
+<td align="left">7</td>
+<td align="left">AHPCC Access</td>
+<td align="right">10 min</td>
+</tr>
+<tr class="even">
+<td align="left">8</td>
+<td align="left">GitHub Copilot Setup</td>
+<td align="right">20 min</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Ready to get started?</strong> Let’s begin with <a href="prerequisites.html#prerequisites">Chapter 1: Prerequisites</a>!</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="prerequisites.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": {}
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": null,
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["AGST50104_Setup_Guide.pdf"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

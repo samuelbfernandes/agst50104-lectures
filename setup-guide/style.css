@@ -1,0 +1,137 @@
+# Custom CSS for bookdown
+
+/* Callout boxes */
+.rmdnote {
+    padding: 1em 1em 1em 4em;
+    margin-bottom: 10px;
+    background: #E8F4F8;
+    border-left: 5px solid #2E86AB;
+}
+
+.rmdnote:before {
+    content: "ℹ️ ";
+    font-size: 1.5em;
+    position: absolute;
+    margin-left: -2.5em;
+}
+
+.rmdimportant {
+    padding: 1em 1em 1em 4em;
+    margin-bottom: 10px;
+    background: #FFF4E6;
+    border-left: 5px solid #F77F00;
+}
+
+.rmdimportant:before {
+    content: "⚠️ ";
+    font-size: 1.5em;
+    position: absolute;
+    margin-left: -2.5em;
+}
+
+.rmdtip {
+    padding: 1em 1em 1em 4em;
+    margin-bottom: 10px;
+    background: #E8F8F5;
+    border-left: 5px solid #06A77D;
+}
+
+.rmdtip:before {
+    content: "💡 ";
+    font-size: 1.5em;
+    position: absolute;
+    margin-left: -2.5em;
+}
+
+.rmdwarning {
+    padding: 1em 1em 1em 4em;
+    margin-bottom: 10px;
+    background: #FEECEC;
+    border-left: 5px solid #D62828;
+}
+
+.rmdwarning:before {
+    content: "🚨 ";
+    font-size: 1.5em;
+    position: absolute;
+    margin-left: -2.5em;
+}
+
+/* Code blocks */
+pre {
+    background-color: #F5F5F5;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+code {
+    background-color: #F5F5F5;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+/* Tables */
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    background-color: #2E86AB;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    text-align: left;
+}
+
+td {
+    padding: 8px;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+tr:nth-child(even) {
+    background-color: #F9F9F9;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4 {
+    color: #2E86AB;
+    margin-top: 1.5em;
+}
+
+/* Links */
+a {
+    color: #06A77D;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Checklist items */
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+}
