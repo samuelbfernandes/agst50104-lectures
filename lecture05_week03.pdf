@@ -1,0 +1,125 @@
+%PDF-1.4
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Kids [3 0 R]
+/Count 1
+>>
+endobj
+3 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/Resources <<
+/Font <<
+/F1 4 0 R
+>>
+>>
+/MediaBox [0 0 612 792]
+/Contents 5 0 R
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+endobj
+5 0 obj
+<<
+/Length 1200
+>>
+stream
+BT
+/F1 24 Tf
+50 750 Td
+(CRD Advanced: Contrasts and Multiple Comparisons) Tj
+0 -30 Td
+/F1 16 Tf
+(Multiple Comparisons and Post-Hoc Tests) Tj
+0 -50 Td
+/F1 12 Tf
+(Dr. Samuel B Fernandes) Tj
+0 -20 Td
+(AGST 50104 - Experimental Design) Tj
+0 -20 Td
+(Spring 2026) Tj
+0 -40 Td
+/F1 14 Tf
+(Learning Objectives) Tj
+0 -20 Td
+/F1 12 Tf
+(• Understand when to use planned contrasts vs. post-hoc comparisons) Tj
+0 -15 Td
+(• Apply orthogonal contrasts to test specific hypotheses in CRD) Tj
+0 -15 Td
+(• Implement multiple comparison procedures: Tukey HSD, Dunnett's test) Tj
+0 -15 Td
+(• Use emmeans package for estimating marginal means and contrasts) Tj
+0 -40 Td
+/F1 14 Tf
+(Topics Covered) Tj
+0 -20 Td
+/F1 12 Tf
+(• CRD Model Review and ANOVA Assumptions) Tj
+0 -15 Td
+(• Diagnostic Plots: Normality, Homogeneity of Variance, Independence) Tj
+0 -15 Td
+(• Radon Release Experiment: Real Data Example) Tj
+0 -15 Td
+(• Planned Contrasts and Orthogonality Testing) Tj
+0 -15 Td
+(• Estimated Marginal Means with emmeans) Tj
+0 -15 Td
+(• Tukey's Honest Significant Difference Test) Tj
+0 -15 Td
+(• Compact Letter Displays for Multiple Comparisons) Tj
+0 -15 Td
+(• Dunnett's Test: Treatment vs. Control) Tj
+0 -15 Td
+(• tidyverse Integration with rstatix) Tj
+0 -15 Td
+(• Publication-Ready Plots with ggpubr) Tj
+0 -40 Td
+/F1 14 Tf
+(Key Statistical Concepts) Tj
+0 -20 Td
+/F1 12 Tf
+(ANOVA Model: y_ij = mu + tau_i + epsilon_ij) Tj
+0 -20 Td
+(Familywise Error Rate: alpha_FW = 1 - (1 - alpha)^k) Tj
+0 -20 Td
+(Effect Sizes: eta-squared, omega-squared, epsilon-squared) Tj
+0 -40 Td
+/F1 11 Tf
+(For complete interactive content with R code examples,) Tj
+0 -15 Td
+(visualizations, and speaker notes, please see the HTML version at:) Tj
+0 -15 Td
+(https://samuelbfernandes.github.io/agst50104-lectures/lecture05_week03.html) Tj
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000262 00000 n 
+0000000341 00000 n 
+trailer
+<<
+/Size 6
+/Root 1 0 R
+>>
+startxref
+1592
+%%EOF
