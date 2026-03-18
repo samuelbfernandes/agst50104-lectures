@@ -1,0 +1,280 @@
+---
+title: "Exam 1 - Part 2: Statistical Analysis"
+subtitle: "AGST 50104 - Experimental Design"
+author: "Sam Fernandes"
+format:
+  pdf:
+    toc: false
+    colorlinks: true
+    geometry:
+      - top=1in
+      - bottom=1in
+      - left=1in
+      - right=1in
+editor: source
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+    echo = TRUE,
+    message = FALSE,
+    warning = FALSE,
+    comment = "#>",
+    fig.width = 7,
+    fig.height = 5
+)
+
+# Load required packages
+library(tidyverse)
+library(car) # For Type III SS via Anova()
+library(emmeans) # For post-hoc comparisons
+library(broom) # For tidy model outputs
+library(MASS) # For Box-Cox transformation
+library(scales) # For enhanced statistical plots
+```
+
+# Question 1
+
+The following data refer to an experiment comparing varieties with respect to cotton properties used in fiber manufacturing. The characteristic selected for analysis was the Pressley strength index. This index was determined by measuring the breaking tension of a bundle of fibers with a pre-fixed cross-sectional area. The experiment was conducted using a randomized complete block design with three replications. The replications consisted of three strength-testing machines, each operated by a different technician. What can you conclude after proceeding with the proper analysis for this experiment? Use figures to illustrate your conclusions.
+
+| Cultivar | Machine I | Machine II | Machine III | Mean  |
+|----------|-----------|------------|-------------|-------|
+| V1       | 7.62      | 8.00       | 7.93        | 7.85  |
+| V2       | 8.14      | 8.15       | 7.87        | 8.05  |
+| V3       | 7.76      | 7.73       | 7.74        | 7.74  |
+| V4       | 7.17      | 7.57       | 7.80        | 7.51  |
+| V5       | 7.46      | 7.68       | 7.21        | 7.45  |
+| V6       | 7.30      | 7.70       | 7.50        | 7.50  |
+
+## Answer
+
+Model (RCBD):
+
+$$
+y_{ij} = \mu + \tau_i + \beta_j + \varepsilon_{ij}, \quad \varepsilon_{ij} \sim N(0,\sigma^2)
+$$
+
+where $\tau_i$ is cultivar effect and $\beta_j$ is machine (block) effect.
+
+```{r q1-data-model}
+q1_data <- tibble::tribble(
+    ~cultivar, ~machine, ~strength,
+    "V1", "I", 7.62,
+    "V1", "II", 8.00,
+    "V1", "III", 7.93,
+    "V2", "I", 8.14,
+    "V2", "II", 8.15,
+    "V2", "III", 7.87,
+    "V3", "I", 7.76,
+    "V3", "II", 7.73,
+    "V3", "III", 7.74,
+    "V4", "I", 7.17,
+    "V4", "II", 7.57,
+    "V4", "III", 7.80,
+    "V5", "I", 7.46,
+    "V5", "II", 7.68,
+    "V5", "III", 7.21,
+    "V6", "I", 7.30,
+    "V6", "II", 7.70,
+    "V6", "III", 7.50
+) |>
+    mutate(cultivar = factor(cultivar), machine = factor(machine))
+
+q1_model <- lm(strength ~ machine + cultivar, data = q1_data)
+```
+
+### Assumptions
+
+```{r q1-assumptions}
+q1_shapiro <- shapiro.test(residuals(q1_model))
+q1_levene <- leveneTest(strength ~ cultivar, data = q1_data)
+
+q1_shapiro
+q1_levene
+```
+
+Interpretation:
+
+- Normality is acceptable (Shapiro-Wilk $p = 0.8975$).
+- Homogeneity of variance is acceptable (Levene $p = 0.659$).
+
+### ANOVA and mean comparison
+
+```{r q1-anova-emmeans}
+q1_anova <- Anova(q1_model, type = 3)
+q1_anova
+
+q1_emm <- emmeans(q1_model, ~cultivar)
+q1_emm
+
+pairs(q1_emm, adjust = "tukey")
+```
+
+Interpretation:
+
+- Machine effect is not significant ($p = 0.164$).
+- Cultivar effect is significant ($p = 0.0186$).
+- V2 has the highest adjusted mean (about $8.05$), and Tukey results show V2 is significantly higher than V5 and V6 at $\alpha = 0.05$.
+
+### Figure
+
+```{r q1-figure}
+ggplot(q1_data, aes(x = cultivar, y = strength, fill = cultivar)) +
+    geom_boxplot(alpha = 0.6, outlier.shape = NA) +
+    geom_point(
+        aes(color = machine),
+        position = position_jitter(width = 0.08),
+        size = 2.4,
+        alpha = 0.85
+    ) +
+    labs(
+        title = "Pressley Strength by Cultivar (RCBD)",
+        x = "Cultivar",
+        y = "Pressley Strength Index",
+        color = "Machine",
+        fill = "Cultivar"
+    ) +
+    theme_minimal(base_size = 12)
+```
+
+Final conclusion for Question 1:
+
+The RCBD analysis indicates cultivar differences are present. V2 is the best performer, while machine-to-machine variability was not statistically important in this experiment.
+
+\clearpage
+
+# Question 2
+
+The data set bacteria.csv is from an experiment that evaluated bacterial growth on 24 treatments. It is a Completely Randomized Design (CRD) with four replications.
+
+a. Formulate the statistical hypotheses $H_0$ and $H_1$ related to the treatments.
+b. Using appropriate tests, verify the basic assumptions of the statistical model for performing ANOVA. Interpret the results.
+c. In the event of violation of any assumptions, assess the possibility of determining an appropriate transformation using Box-Cox (1946). Then, recheck assumptions.
+d. Perform ANOVA on the appropriate scale at 5% significance. Present and interpret results. Identify treatment with less bacterial growth.
+
+## Answer
+
+### (a) Hypotheses
+
+Let $\mu_i$ be the mean bacterial growth for treatment $i$, $i=1,\ldots,24$.
+
+$$
+H_0: \mu_1 = \mu_2 = \cdots = \mu_{24}
+$$
+
+$$
+H_1: \text{at least one treatment mean differs}
+$$
+
+### Data preparation
+
+```{r q2-data}
+q2_data <- read.csv("bacteria.csv") |>
+    pivot_longer(cols = starts_with("r"), names_to = "rep", values_to = "growth") |>
+    mutate(treat = factor(treat), rep = factor(rep))
+
+head(q2_data)
+```
+
+### (b) Assumptions on raw scale
+
+```{r q2-raw-assumptions}
+q2_model_raw <- lm(growth ~ treat, data = q2_data)
+
+q2_raw_shapiro <- shapiro.test(residuals(q2_model_raw))
+q2_raw_levene <- leveneTest(growth ~ treat, data = q2_data)
+
+q2_raw_shapiro
+q2_raw_levene
+```
+
+Interpretation:
+
+- Normality is violated on raw scale (Shapiro-Wilk $p = 0.000123$).
+- Homogeneity is also violated on raw scale (Levene $p = 0.000353$).
+
+### (c) Box-Cox transformation and re-check
+
+```{r q2-boxcox-transform}
+q2_boxcox <- boxcox(q2_model_raw, plotit = FALSE)
+q2_lambda <- q2_boxcox$x[which.max(q2_boxcox$y)]
+q2_lambda
+
+q2_data <- q2_data |>
+    mutate(growth_bc = (growth^q2_lambda - 1) / q2_lambda)
+
+q2_model_bc <- lm(growth_bc ~ treat, data = q2_data)
+
+q2_bc_shapiro <- shapiro.test(residuals(q2_model_bc))
+q2_bc_levene <- leveneTest(growth_bc ~ treat, data = q2_data)
+
+q2_bc_shapiro
+q2_bc_levene
+```
+
+Interpretation:
+
+- Box-Cox suggests $\lambda \approx 0.2$.
+- After transformation, assumptions are acceptable:
+  - Shapiro-Wilk $p = 0.395$
+  - Levene $p = 0.0846$
+
+### (d) ANOVA on appropriate scale
+
+```{r q2-anova}
+q2_anova <- anova(q2_model_bc)
+broom::tidy(q2_anova)
+```
+
+Interpretation:
+
+- Treatment effect is highly significant ($p < 0.001$; approximately $8.62 \times 10^{-42}$).
+- Reject $H_0$. Not all treatment means are equal.
+
+### Treatment with less growth
+
+```{r q2-lowest-treatment}
+q2_means <- q2_data |>
+    group_by(treat) |>
+    summarize(
+        mean_raw = mean(growth),
+        mean_bc = mean(growth_bc),
+        .groups = "drop"
+    ) |>
+    arrange(mean_raw)
+
+q2_means
+```
+
+Interpretation:
+
+- The treatment with less bacterial growth is treatment 20 (raw mean $= 12.75$).
+
+```{r q2-anova-emmeans}
+q2_emm <- emmeans(q2_model_bc, ~treat)
+q2_emm
+
+model_means_cld <- multcomp::cld(q2_emm,  adjust = "Tukey", Letters = letters, alpha = 0.05)
+model_means_cld
+```
+
+
+
+### Figure
+
+```{r q2-figure}
+ggplot(q2_data, aes(x = treat, y = growth)) +
+    geom_boxplot(fill = "#80c5c5", alpha = 0.65, outlier.alpha = 0.45) +
+    labs(
+        title = "Bacterial Growth by Treatment (CRD)",
+        x = "Treatment",
+        y = "Bacterial Growth"
+    ) +
+    theme_minimal(base_size = 11) +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+```
+
+Final conclusion for Question 2:
+
+Raw assumptions failed, Box-Cox transformation corrected assumptions, ANOVA confirmed strong treatment differences, and treatment 20 showed the lowest bacterial growth.
+
