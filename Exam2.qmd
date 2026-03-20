@@ -1,0 +1,331 @@
+---
+title: "Exam 2 - AGST 50104"
+author: "Name:______________________"
+format: html
+editor: visual
+---
+
+```{r}
+#| message: false
+#| echo: false
+library(tidyverse)
+library(agridat)
+library(desplot)
+library(agricolae)
+library(FielDHub)
+library(asreml)
+```
+
+**1. Fill the following anova tables (source of variation and degree of freedom):**
+
+:::::: columns
+::: {.column width="45%"}
+The combination of Irrigation (4 levels) and Cultivar (4 levels) is randomly assigned to an experimental unit in any of the 4 reps.
+
+| Source | DF  |
+|:-------|:---:|
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+Irrigation (4 levels) is randomized in each of the four reps and in each irrigation, four cultivars are randomized.
+
+| Source | DF  |
+|:-------|:---:|
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+:::
+::::::
+
+:::::: columns
+::: {.column width="45%"}
+The combination of Irrigation (4 levels) and Cultivar (4 levels) is randomized in each rep (4 levels).
+
+| Source | DF  |
+|:-------|:---:|
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+In each of 4 reps, we randomize irrigation (4 levels) in the column and, independently, cultivars (4 levels) in the row direction.
+
+| Source | DF  |
+|:-------|:---:|
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+|        |     |
+:::
+::::::
+
+**2. Identify the following experimental designs below and write the statistical model for each of them. Make sure you describe below what each term in the model is. TIP: if you want to use subscripts in Quarto, you can us `$_{i}$` (e.g., Y**\$\_{ij}\$**), but I'll accept normal cases if you are having issues. The code below don't need to be used for anything it is just to generate the question.**
+
+```{r}
+#| echo: false
+design1 <- read.csv("breed_data.csv")
+design1 <- transform(design1, 
+                   Block = factor(B),
+                   row_spacing = factor(N),
+                   irrigation = factor(cv),
+                   interaction = factor(interaction))
+
+# 2 pesiticides
+TrtPest   <- paste0("P", 1:2)    # P1 & P2
+n_TrtPest <- n_distinct(TrtPest) # 2
+# 4 soil treatments
+TrtSoil   <- paste0("S", 1:4)    # S1 - S4
+n_TrtSoil <- n_distinct(TrtSoil) # 4
+# 6 fertilizer
+TrtFert   <- paste0("N", 1:6)    # N1 - N6
+n_TrtFert <- n_distinct(TrtFert) # 6
+# 15 genotpyes
+TrtGen    <- paste0("G", 1:15)   # G1 - G15
+n_TrtGen  <- n_distinct(TrtGen)  # 15
+# 2 check varieties
+Checks    <- c("Std_A", "Std_B")
+# number of replicates
+n_Reps    <- 3
+design2 <- design.crd(trt = TrtSoil,
+                      r = n_Reps,
+                      seed = 42)
+# Add Row and Col 
+design2$bookRowCol <- design2$book %>%
+  bind_cols(expand.grid(Row = 1:n_Reps,
+                        Col = 1:n_TrtSoil))
+design3 <- design.rcbd(trt = TrtSoil,
+                        r = n_Reps,
+                        seed = 42)
+# Add Row and Col 
+design3$bookRowCol <- design3$book %>% 
+  mutate(Row = block %>% as.integer) %>% 
+  group_by(Row) %>% 
+  mutate(Col = 1:n()) %>% 
+  ungroup()
+
+design4 <- design.dau(trt1 = Checks,
+                            trt2 = TrtGen,
+                            r = n_Reps,
+                            seed = 42)
+
+# Add Row and Col
+design4$bookRowCol <- design4$book %>% 
+  mutate(Col = block %>% as.integer,
+         Row = plots %>% str_sub(3,3) %>% as.integer)
+```
+
+Design 1: Augmented Block Design (WE HAVEN'T SEEN IT YET):\
+$Y_{ij} =  \mu + G_i + B_j + \epsilon_{ij}$
+
+Where $\mu$ is the grand mean, G is the genotype effect, B is the block effect and $\epsilon$ is the error term. Remember, if you look only at the check (the replicated ones) genoypes,this is an RCBD augmented with all the unreplicated individuals. There is actually the possibility of separating replicated (fixed effect) and non-replicated (random effect) individuals in the analysis, which might be the best to do, but we didn't see in class.
+
+Design 2:
+
+Design 3:
+
+Design 4:
+
+:::::: columns
+::: {.column width="45%"}
+```{r, echo=FALSE}
+# Plot field layout
+desplot(trt ~ Row + Col,
+        out1 = block,
+        text = trt, cex = 0.7, shorten = "no",
+        data = design4$bookRowCol ,
+        main = "Design 1")
+```
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+```{r, echo=FALSE}
+desplot(
+  irrigation ~ col + row,
+  text = row_spacing, shorten = "no",
+  cex = 0.8,
+  out1 = B, data = design1,
+  main = "Design 2"
+)
+
+```
+:::
+::::::
+
+:::::: columns
+::: {.column width="45%"}
+```{r, echo=FALSE}
+# Plot field layout
+desplot(TrtSoil ~ Row + Col, flip = TRUE,
+        text = TrtSoil, cex = 1, shorten = "no",
+        out1 = Col,
+        out2 = Row,
+        data = design2$bookRowCol,
+        main = "Design 3")
+```
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+```{r, echo=FALSE}
+# Plot field layout
+desplot(block ~ Row + Col, flip = TRUE,
+        text = TrtSoil, cex = 1, shorten = "no",
+        out1 = Col,
+        out2 = Row,
+        data = design3$bookRowCol,
+        main = "Design 4", key.cex = 0.5)
+```
+:::
+::::::
+
+**3. The result below is from an experiment conducted in 4 locations in Arkansas. At each location, it was a factorial RCBD where we evaluated the effects of different herbicide on different rice cultivars. Using a mixed linear model approach, analyze it and compare the use of the following variance-covariance structures on *location* (Identity, Compound Symmetry, AR1, Diagonal, Unstructured)**
+
+```{r, echo=FALSE, message=FALSE}
+grass <- read.csv("grass.csv")
+grass <- transform(grass,
+                   treat = factor(treat),
+                   time = factor(time),
+                   loc = factor(loc),
+                   year = factor(year))
+
+```
+
+a)  What are the assumptions we are making in each of the 5 models listed?
+
+**Identity**:
+
+**Compound symmetry**:
+
+**AR1**:
+
+**Diagonal**:
+
+**Unstructured**:
+
+**4. When should we use the following experimental designs?**
+
+a)  Incomplete block designs (Not seen yet):
+
+-   When we are not able to fit all of our treatments in a single block due to practical limitations or due to our inability to keep plots homogeneous inside a given block.
+
+b)  Randomized complete block design:
+
+-   
+
+c)  Split plot in a CRD:
+
+-   
+
+**5. Comparing designs:**
+
+a)  What is the difference between Strip Plot, Factorial, and split plot?
+
+-   
+
+b)  Which of the designs listed above is more powerful? Why?
+
+-   
+
+c)  Consider you have an experiment to be conducted in a split-plot designed to compare Factor A and Factor B. Factor A is the most important of the two in this experiment. What factor you'd have evaluate as whole plot and which would go as the sub plot?
+
+-   
+
+**6. Regarding random vs fixed effects:**
+
+a)  When should a factor be considered a random or fixed effect? Give me 3 examples.
+
+-   
+
+b)  When should block be a random or fixed effect?
+
+-   
+
+**7. Regarding Linear Mixed models (LMM):**
+
+a)  In simple terms, how does the model adjustment in a LMM framework works?
+
+-   
+
+b)  How can we compare models under LMM?
+
+-   
+
+**8. Answer the following questions:**
+
+a)  Why would a researcher use LMM instead of ANOVA? What could be the implications?
+
+-   
+
+b)  What is the difference between nested vs factorial settings and how one can specify it in R?
+
+-   
+
+c)  How can we analyze repeated measures data under ANOVA and LMM? in case of ANOVA, what are the assumptions?
+
+-   If the sphericity assumption is met (or if the we assume a compound symmetry structure), we can analized it as a split-plot where the time variable would be the whole plot. With LMM, we can utilize a variance-covariance structure that accounts for the correlation between the multiple measurements taken on the same plot.
+
+**9. What does it mean to have a significant p-value for the following:**
+
+a)  Additivity test
+
+b)  Shapiro-Wilk test
+
+c)  Levene's Test
+
+d)  Anova F test.
+
+**10. What is the design in each model:**
+
+m1 \<- aov(Y \~ A + C + A:C + Error(rep + rep:A))
+
+m1 =
+
+m2 \<- aov(Y \~ rep + A + C + A:C)
+
+m2 =
+
+m3 \<- aov(Y \~ A + C + A:C + + Error(rep + rep:A + rep:C))
+
+m3 =
+
+m4 \<- aov(Y \~ A + C + A:C + Error(rep:A))
+
+m4 =
