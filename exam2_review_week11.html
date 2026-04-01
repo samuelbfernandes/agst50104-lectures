@@ -1512,11 +1512,11 @@ Dr. Samuel B Fernandes
 </div>
 </div>
 </div>
-</section><section class="slide level2 center" style="font-size: 0.85em;"><h2>Complex Factorials: R Analysis Pattern</h2>
-<p><code><a href="https://rdrr.io/pkg/ExpDes.pt/man/ex4.html">ExpDes.pt::ex4</a></code> — 4 rotation speeds × 2 manure treatments (CRD, 3 reps per cell). Response: leaf nitrogen content (%).</p>
+</section><section class="slide level2 center" style="font-size: 0.8em;"><h2>Complex Factorials: R Analysis Pattern</h2>
+<p><code><a href="https://rdrr.io/pkg/ExpDes/man/ex4.html">ExpDes::ex4</a></code> — 4 rotation speeds × 2 manure treatments (CRD, 3 reps per cell). Response: leaf nitrogen content (%).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href></a><span class="fu">library</span>(dplyr); <span class="fu">library</span>(car); <span class="fu">library</span>(emmeans)</span>
-<span id="cb1-2"><a href></a><span class="fu">library</span>(ExpDes.pt)</span>
+<span id="cb1-2"><a href></a><span class="fu">library</span>(ExpDes)</span>
 <span id="cb1-3"><a href></a></span>
 <span id="cb1-4"><a href></a><span class="fu">data</span>(ex4)</span>
 <span id="cb1-5"><a href></a>ex4 <span class="ot">&lt;-</span> ex4 <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">revol =</span> <span class="fu">factor</span>(revol))</span>
@@ -1540,7 +1540,7 @@ Dr. Samuel B Fernandes
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href></a><span class="fu">options</span>(<span class="at">contrasts =</span> <span class="fu">c</span>(<span class="st">&quot;contr.treatment&quot;</span>, <span class="st">&quot;contr.poly&quot;</span>))  <span class="co"># always restore!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section class="slide level2 center" style="font-size: 0.85em;"><h2>Simple Effects Follow-Up</h2>
+</section><section class="slide level2 center" style="font-size: 0.7em;"><h2>Simple Effects Follow-Up</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href></a><span class="co"># Interaction NOT significant → report main effects</span></span>
 <span id="cb4-2"><a href></a><span class="fu">emmeans</span>(m_fac, <span class="sc">~</span> revol) <span class="sc">|&gt;</span> <span class="fu">pairs</span>(<span class="at">adjust =</span> <span class="st">&quot;tukey&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1583,11 +1583,11 @@ Dr. Samuel B Fernandes
 </div>
 </div>
 </div>
-</section></section><section><section class="title-slide slide level1 center" data-background-color="#2c3e50"><h1>Split-Plot &amp; Strip-Plot Designs</h1>
+</section></section><section><section class="title-slide slide level1 center"><h1>Split-Plot &amp; Strip-Plot Designs</h1>
 <p><code><a href="https://kwstat.github.io/agridat/reference/yates.oats.html">agridat::yates.oats</a></code> — Rothamsted 1931. 3 oat varieties (whole-plot) × 4 nitrogen rates (sub-plot), 6 blocks.</p>
-</section><section class="slide level2 center" style="font-size: 0.9em;"><h2>Split-Plot: Design Decision</h2>
+</section><section class="slide level2 center" style="font-size: 0.8em;"><h2>Split-Plot: Design Decision</h2>
 <div class="columns">
-<div class="column" style="width:55%;">
+<div class="column" style="width:60%;">
 <p><strong>The key question:</strong></p>
 <blockquote>
 <p>Which factor is <strong>hard to change</strong> in the field?</p>
@@ -1617,7 +1617,8 @@ Dr. Samuel B Fernandes
 </tbody>
 </table>
 <p>The hard-to-change factor gets the <strong>larger</strong> experimental unit.</p>
-</div><div class="column" style="width:45%;">
+</div><div class="column" style="width:40%;">
+<div class="fragment">
 <p><strong>Two-stage randomization:</strong></p>
 <ol type="1">
 <li>Randomly assign WP factor to whole-plots <em>within each block</em><br>
@@ -1626,6 +1627,7 @@ Dr. Samuel B Fernandes
 </li>
 </ol>
 <p><span class="math inline">\(\Rightarrow\)</span> <strong>Two separate randomizations</strong> = two separate error terms.</p>
+</div>
 </div></div>
 </section><section class="slide level2 center" style="font-size: 0.9em;"><h2>Split-Plot: Two Error Strata</h2>
 <p><span class="math display">\[Y_{ijk} = \mu + \rho_k + \alpha_i + \underbrace{\delta_{ik}}_{\text{WP error}} + \beta_j + (\alpha\beta)_{ij} + \underbrace{\varepsilon_{ijk}}_{\text{SP error}}\]</span></p>
@@ -1671,7 +1673,7 @@ Dr. Samuel B Fernandes
 </div>
 </div>
 </div>
-</section><section class="slide level2 center" style="font-size: 0.85em;"><h2>Split-Plot: R Code</h2>
+</section><section class="slide level2 center" style="font-size: 0.7em;"><h2>Split-Plot: R Code</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Classical ANOVA (two error strata):</strong></p>
@@ -1710,24 +1712,24 @@ Dr. Samuel B Fernandes
 </div><div class="column" style="width:50%;">
 <p><strong>Mixed-model for EMMs:</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href></a><span class="fu">library</span>(nlme); <span class="fu">library</span>(emmeans); <span class="fu">library</span>(multcomp)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href></a><span class="fu">library</span>(lme4); <span class="fu">library</span>(emmeans); <span class="fu">library</span>(multcomp)</span>
 <span id="cb9-2"><a href></a></span>
-<span id="cb9-3"><a href></a>model_lme <span class="ot">&lt;-</span> <span class="fu">lme</span>(yield <span class="sc">~</span> gen <span class="sc">*</span> nitro,</span>
-<span id="cb9-4"><a href></a>  <span class="at">random =</span> <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> block <span class="sc">/</span> gen,</span>
-<span id="cb9-5"><a href></a>  <span class="at">data =</span> dat)</span>
+<span id="cb9-3"><a href></a>model_lme <span class="ot">&lt;-</span> <span class="fu">lmer</span>(yield <span class="sc">~</span> gen <span class="sc">*</span> nitro <span class="sc">+</span></span>
+<span id="cb9-4"><a href></a>                    (<span class="dv">1</span> <span class="sc">|</span> block <span class="sc">/</span> gen),</span>
+<span id="cb9-5"><a href></a>                  <span class="at">data =</span> dat, <span class="at">REML =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb9-6"><a href></a></span>
 <span id="cb9-7"><a href></a>emm_sp <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(model_lme, <span class="sc">~</span> nitro)</span>
 <span id="cb9-8"><a href></a>multcomp<span class="sc">::</span><span class="fu">cld</span>(emm_sp, <span class="at">Letters =</span> letters,</span>
 <span id="cb9-9"><a href></a>              <span class="at">adjust =</span> <span class="st">&quot;tukey&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt;  nitro emmean   SE df lower.CL upper.CL .group
-#&gt;  0       79.4 7.17  5     52.2      107  a    
-#&gt;  0.2     98.9 7.17  5     71.7      126   b   
-#&gt;  0.4    114.2 7.17  5     87.0      141    c  
-#&gt;  0.6    123.4 7.17  5     96.2      151    c  
+<pre><code>#&gt;  nitro emmean   SE   df lower.CL upper.CL .group
+#&gt;  0       79.4 7.17 6.79     55.3      103  a    
+#&gt;  0.2     98.9 7.17 6.79     74.8      123   b   
+#&gt;  0.4    114.2 7.17 6.79     90.2      138    c  
+#&gt;  0.6    123.4 7.17 6.79     99.3      147    c  
 #&gt; 
 #&gt; Results are averaged over the levels of: gen 
-#&gt; Degrees-of-freedom method: containment 
+#&gt; Degrees-of-freedom method: kenward-roger 
 #&gt; Confidence level used: 0.95 
 #&gt; Conf-level adjustment: sidak method for 4 estimates 
 #&gt; P value adjustment: tukey method for comparing a family of 4 estimates 
@@ -1798,17 +1800,17 @@ Dr. Samuel B Fernandes
 </div><div class="column" style="width:50%;">
 <p><strong>Mixed-model (for EMMs):</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href></a><span class="fu">library</span>(nlme)</span>
-<span id="cb12-2"><a href></a>model_strip_lme <span class="ot">&lt;-</span> <span class="fu">lme</span>(y <span class="sc">~</span> H <span class="sc">*</span> V,</span>
-<span id="cb12-3"><a href></a>  <span class="at">random =</span> <span class="fu">list</span>(<span class="at">Block =</span> <span class="fu">pdBlocked</span>(<span class="fu">list</span>(</span>
-<span id="cb12-4"><a href></a>    <span class="fu">pdIdent</span>(<span class="sc">~</span> <span class="dv">1</span>),</span>
-<span id="cb12-5"><a href></a>    <span class="fu">pdIdent</span>(<span class="sc">~</span> H <span class="sc">-</span> <span class="dv">1</span>),</span>
-<span id="cb12-6"><a href></a>    <span class="fu">pdIdent</span>(<span class="sc">~</span> V <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb12-7"><a href></a>  ))),</span>
-<span id="cb12-8"><a href></a>  <span class="at">data =</span> d)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href></a><span class="fu">library</span>(lme4)</span>
+<span id="cb12-2"><a href></a><span class="co"># Three random terms = three error strata</span></span>
+<span id="cb12-3"><a href></a>model_strip_lme <span class="ot">&lt;-</span> <span class="fu">lmer</span>(</span>
+<span id="cb12-4"><a href></a>  y <span class="sc">~</span> H <span class="sc">*</span> V <span class="sc">+</span></span>
+<span id="cb12-5"><a href></a>    (<span class="dv">1</span> <span class="sc">|</span> Block) <span class="sc">+</span>       <span class="co"># block main effect</span></span>
+<span id="cb12-6"><a href></a>    (<span class="dv">1</span> <span class="sc">|</span> Block<span class="sc">:</span>H) <span class="sc">+</span>     <span class="co"># WP error for H</span></span>
+<span id="cb12-7"><a href></a>    (<span class="dv">1</span> <span class="sc">|</span> Block<span class="sc">:</span>V),      <span class="co"># WP error for V</span></span>
+<span id="cb12-8"><a href></a>  <span class="at">data =</span> d, <span class="at">REML =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
-</section><section class="slide level2 center" style="font-size: 0.8em;"><h2>Design at a Glance</h2>
+</section><section class="slide level2 center" style="font-size: 0.7em;"><h2>Design at a Glance</h2>
 <table class="caption-top">
 <colgroup>
 <col style="width: 20%">
@@ -1860,9 +1862,7 @@ Dr. Samuel B Fernandes
 <td>Tillage direction × herbicide band</td>
 </tr>
 </tbody>
-</table></section></section><section><section class="title-slide slide level1 center" data-background-color="#2c3e50"><h1>Linear Mixed Models &amp; ASReml-R</h1>
-
-</section><section class="slide level2 center" style="font-size: 0.9em;"><h2>Fixed vs. Random: The Decision</h2>
+</table></section><section class="slide level2 center" style="font-size: 0.8em;"><h2>Fixed vs. Random: The Decision</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Fixed effects</strong></p>
@@ -1871,7 +1871,7 @@ Dr. Samuel B Fernandes
 <li>Your research question is about <em>these</em> levels</li>
 <li>Estimable: treatment means, contrasts</li>
 </ul>
-<p><strong>Examples</strong>: herbicide rate, tillage type, crop variety (if those exact varieties are the focus)</p>
+<p><strong>Examples</strong>: always depends on the context, but often: fertilizer type, irrigation frequency, tillage method</p>
 </div><div class="column" style="width:50%;">
 <p><strong>Random effects</strong></p>
 <ul>
@@ -1879,32 +1879,12 @@ Dr. Samuel B Fernandes
 <li>Your question is about <em>variance</em>, not specific levels</li>
 <li>Estimable: variance component (<span class="math inline">\(\sigma^2_b\)</span>)</li>
 </ul>
-<p><strong>Examples</strong>: block, field location, year, individual plant/plot</p>
+<p><strong>Examples</strong>: always depends on the context, but often: block, field location, year, individual plant/plot</p>
 </div></div>
-<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout callout-none no-icon callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
-</div>
 <div class="callout-content">
-<p><strong>Rule of thumb</strong>: Can you repeat the exact same level next year? → Fixed.<br>
-Is it a random draw from a larger group? → Random.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Warning</strong></p>
-</div>
-<div class="callout-content">
-<p><strong>In split-plot</strong>: Block and Block×A are always <strong>random</strong>. Treatments (A, B) are always <strong>fixed</strong>.</p>
+<p><strong>In split-plot (ANOVA framework using Error())</strong>: Block and Block×A are always <strong>random</strong>. Treatments (A, B) are always <strong>fixed</strong>.</p>
 </div>
 </div>
 </div>
@@ -1922,193 +1902,121 @@ Is it a random draw from a larger group? → Random.</p>
 <span id="cb13-9"><a href></a></span>
 <span id="cb13-10"><a href></a><span class="co"># 2. Split-plot: block/gen nesting = WP error + SP error</span></span>
 <span id="cb13-11"><a href></a>m_sp <span class="ot">&lt;-</span> <span class="fu">lmer</span>(yield <span class="sc">~</span> gen <span class="sc">*</span> nitro <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> block <span class="sc">/</span> gen),</span>
-<span id="cb13-12"><a href></a>             <span class="at">data =</span> dat, <span class="at">REML =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb13-13"><a href></a></span>
-<span id="cb13-14"><a href></a><span class="co"># 3. ICC: fraction of variation between blocks</span></span>
-<span id="cb13-15"><a href></a><span class="fu">library</span>(performance)</span>
-<span id="cb13-16"><a href></a><span class="fu">icc</span>(m_rcbd)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt; # Intraclass Correlation Coefficient
-#&gt; 
-#&gt;     Adjusted ICC: 0.489
-#&gt;   Unadjusted ICC: 0.301</code></pre>
+<span id="cb13-12"><a href></a>             <span class="at">data =</span> dat, <span class="at">REML =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</div>
-<div class="callout-insight">
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
 <p><code>(1 | block / gen)</code> expands to <code>(1 | block) + (1 | block:gen)</code> — one random intercept per block, one per whole-plot. This is the split-plot error structure in mixed-model form.</p>
 </div>
-</section><section class="slide level2 center" style="font-size: 0.85em;"><h2>ASReml-R: When and Why</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
+</div>
+</div>
+</section><section class="slide level2 center"><h2>ASReml-R vs lme4</h2>
 <p><strong>Use <code>lme4</code> when:</strong></p>
 <ul>
 <li>Random intercepts and slopes</li>
 <li>Nested / crossed random effects</li>
 <li>Standard split-plot or RCBD</li>
 </ul>
-<p><strong>Use <code>ASReml-R</code> when:</strong></p>
+<p><strong><code>ASReml-R</code> needed when:</strong></p>
 <ul>
 <li>Residual covariance structures (AR1, CS, diagonal)</li>
 <li>Spatial row × column adjustment</li>
 <li>Heterogeneous residual variances by environment</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p><strong>Practical rule (from course):</strong></p>
-<blockquote>
-<p>Start with <code>lme4</code>. Move to <code>ASReml-R</code> when the <strong>error structure itself</strong> is part of the scientific question.</p>
-</blockquote>
-<table class="caption-top">
-<thead><tr class="header">
-<th>Goal</th>
-<th>Package</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>EMMs from split-plot</td>
-<td>either</td>
-</tr>
-<tr class="even">
-<td>Variance components</td>
-<td>either</td>
-</tr>
-<tr class="odd">
-<td>AR(1) residuals</td>
-<td>ASReml</td>
-</tr>
-<tr class="even">
-<td>Spatial adjustment</td>
-<td>ASReml</td>
-</tr>
-</tbody>
-</table>
-</div></div>
-</section><section class="slide level2 center" style="font-size: 0.85em;"><h2>ASReml-R: Split-Plot Example</h2>
+</ul></section><section class="slide level2 center" style="font-size: 0.85em;"><h2>ASReml-R: Split-Plot Example</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href></a><span class="fu">library</span>(asreml)</span>
-<span id="cb15-2"><a href></a></span>
-<span id="cb15-3"><a href></a><span class="co"># Split-plot: irrigation = whole-plot, cv = sub-plot</span></span>
-<span id="cb15-4"><a href></a>split_model <span class="ot">&lt;-</span> <span class="fu">asreml</span>(</span>
-<span id="cb15-5"><a href></a>  <span class="at">fixed  =</span> resp <span class="sc">~</span> irrigation <span class="sc">*</span> cv,   <span class="co"># fixed effects</span></span>
-<span id="cb15-6"><a href></a>  <span class="at">random =</span> <span class="sc">~</span> block <span class="sc">+</span> block<span class="sc">:</span>irrigation, <span class="co"># WP error terms</span></span>
-<span id="cb15-7"><a href></a>  <span class="at">data   =</span> alfaSPLIT</span>
-<span id="cb15-8"><a href></a>)</span>
-<span id="cb15-9"><a href></a></span>
-<span id="cb15-10"><a href></a><span class="co"># If convergence issues:</span></span>
-<span id="cb15-11"><a href></a>split_model <span class="ot">&lt;-</span> <span class="fu">update.asreml</span>(split_model)</span>
-<span id="cb15-12"><a href></a></span>
-<span id="cb15-13"><a href></a><span class="co"># F-tests for fixed effects (equivalent to ANOVA table)</span></span>
-<span id="cb15-14"><a href></a><span class="fu">wald</span>(split_model)</span>
-<span id="cb15-15"><a href></a></span>
-<span id="cb15-16"><a href></a><span class="co"># Variance components: WP error, SP error</span></span>
-<span id="cb15-17"><a href></a><span class="fu">summary</span>(split_model)<span class="sc">$</span>varcomp</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href></a><span class="fu">library</span>(asreml)</span>
+<span id="cb14-2"><a href></a></span>
+<span id="cb14-3"><a href></a><span class="co"># Split-plot: irrigation = whole-plot, cv = sub-plot</span></span>
+<span id="cb14-4"><a href></a>split_model <span class="ot">&lt;-</span> <span class="fu">asreml</span>(</span>
+<span id="cb14-5"><a href></a>  <span class="at">fixed  =</span> resp <span class="sc">~</span> irrigation <span class="sc">*</span> cv,   <span class="co"># fixed effects</span></span>
+<span id="cb14-6"><a href></a>  <span class="at">random =</span> <span class="sc">~</span> block <span class="sc">+</span> block<span class="sc">:</span>irrigation, <span class="co"># WP error terms</span></span>
+<span id="cb14-7"><a href></a>  <span class="at">data   =</span> alfaSPLIT</span>
+<span id="cb14-8"><a href></a>)</span>
+<span id="cb14-9"><a href></a></span>
+<span id="cb14-10"><a href></a><span class="co"># If convergence issues:</span></span>
+<span id="cb14-11"><a href></a>split_model <span class="ot">&lt;-</span> <span class="fu">update.asreml</span>(split_model)</span>
+<span id="cb14-12"><a href></a></span>
+<span id="cb14-13"><a href></a><span class="co"># F-tests for fixed effects (equivalent to ANOVA table)</span></span>
+<span id="cb14-14"><a href></a><span class="fu">wald</span>(split_model)</span>
+<span id="cb14-15"><a href></a></span>
+<span id="cb14-16"><a href></a><span class="co"># Variance components: WP error, SP error</span></span>
+<span id="cb14-17"><a href></a><span class="fu">summary</span>(split_model)<span class="sc">$</span>varcomp</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout-concept">
 <p><code>random = ~ block + block:irrigation</code> encodes the two random error strata: one for blocks, one for the Block×Irrigation whole-plot error.</p>
 </div>
-</section><section class="slide level2 center" style="font-size: 0.85em;"><h2>ASReml-R: Repeated Measures</h2>
+</section><section class="slide level2 center" style="font-size: 0.8em;"><h2>ASReml-R: Repeated Measures</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Online License checked out Wed Apr  1 14:24:37 2026</code></pre>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href></a><span class="co"># Independent (baseline — no correlation)</span></span>
 <span id="cb16-2"><a href></a>m_id <span class="ot">&lt;-</span> <span class="fu">asreml</span>(y <span class="sc">~</span> Tmt <span class="sc">*</span> Time,</span>
-<span id="cb16-3"><a href></a>               <span class="at">data =</span> grassUV)</span>
-<span id="cb16-4"><a href></a></span>
-<span id="cb16-5"><a href></a><span class="co"># Compound Symmetry: constant correlation across all time points</span></span>
-<span id="cb16-6"><a href></a>m_cs <span class="ot">&lt;-</span> <span class="fu">asreml</span>(y <span class="sc">~</span> Tmt <span class="sc">*</span> Time,</span>
-<span id="cb16-7"><a href></a>               <span class="at">residual =</span> <span class="sc">~</span> <span class="fu">id</span>(Plant)<span class="sc">:</span><span class="fu">cor</span>(Time),</span>
-<span id="cb16-8"><a href></a>               <span class="at">data =</span> grassUV)</span>
-<span id="cb16-9"><a href></a></span>
-<span id="cb16-10"><a href></a><span class="co"># AR(1): correlation decays with time lag</span></span>
-<span id="cb16-11"><a href></a>m_ar1 <span class="ot">&lt;-</span> <span class="fu">asreml</span>(y <span class="sc">~</span> Tmt <span class="sc">*</span> Time,</span>
-<span id="cb16-12"><a href></a>                <span class="at">residual =</span> <span class="sc">~</span> <span class="fu">id</span>(Plant)<span class="sc">:</span><span class="fu">corh</span>(Time),</span>
-<span id="cb16-13"><a href></a>                <span class="at">data =</span> grassUV)</span>
-<span id="cb16-14"><a href></a></span>
-<span id="cb16-15"><a href></a><span class="co"># Compare models with AIC/BIC</span></span>
-<span id="cb16-16"><a href></a><span class="fu">bind_rows</span>(</span>
-<span id="cb16-17"><a href></a>  <span class="fu">infoCriteria</span>(m_id),</span>
-<span id="cb16-18"><a href></a>  <span class="fu">infoCriteria</span>(m_cs),</span>
-<span id="cb16-19"><a href></a>  <span class="fu">infoCriteria</span>(m_ar1)</span>
-<span id="cb16-20"><a href></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-3"><a href></a>               <span class="at">data =</span> grassUV,</span>
+<span id="cb16-4"><a href></a>               <span class="at">trace =</span> F)</span>
+<span id="cb16-5"><a href></a></span>
+<span id="cb16-6"><a href></a><span class="co"># Compound Symmetry: constant correlation across all time points</span></span>
+<span id="cb16-7"><a href></a>m_cs <span class="ot">&lt;-</span> <span class="fu">asreml</span>(y <span class="sc">~</span> Tmt <span class="sc">*</span> Time,</span>
+<span id="cb16-8"><a href></a>               <span class="at">residual =</span> <span class="sc">~</span> <span class="fu">id</span>(Plant)<span class="sc">:</span><span class="fu">cor</span>(Time),</span>
+<span id="cb16-9"><a href></a>               <span class="at">data =</span> grassUV,</span>
+<span id="cb16-10"><a href></a>               <span class="at">trace =</span> F)</span>
+<span id="cb16-11"><a href></a></span>
+<span id="cb16-12"><a href></a><span class="co"># AR(1): correlation decays with time lag</span></span>
+<span id="cb16-13"><a href></a>m_ar1 <span class="ot">&lt;-</span> <span class="fu">asreml</span>(y <span class="sc">~</span> Tmt <span class="sc">*</span> Time,</span>
+<span id="cb16-14"><a href></a>                <span class="at">residual =</span> <span class="sc">~</span> <span class="fu">id</span>(Plant)<span class="sc">:</span><span class="fu">corh</span>(Time),</span>
+<span id="cb16-15"><a href></a>                <span class="at">data =</span> grassUV,</span>
+<span id="cb16-16"><a href></a>               <span class="at">trace =</span> F)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout callout-none no-icon callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
-</div>
 <div class="callout-content">
 <p>Choose the model with <strong>lowest AIC/BIC</strong>. CS assumes equal correlation; AR(1) assumes closer time points are more correlated.</p>
 </div>
 </div>
 </div>
-</section></section><section><section class="title-slide slide level1 center" data-background-color="#2c3e50"><h1>BIBD &amp; Exam Preparation</h1>
-
-</section><section class="slide level2 center" style="font-size: 0.85em;"><h2>BIBD: When Blocks Are Too Small</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p><strong>Parameters</strong> (<span class="math inline">\(bk = vr\)</span>; <span class="math inline">\(\lambda(v-1) = r(k-1)\)</span>):</p>
-<table class="caption-top">
-<thead><tr class="header">
-<th>Symbol</th>
-<th>Meaning</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(v\)</span></td>
-<td>Number of treatments</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(b\)</span></td>
-<td>Number of blocks</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(k\)</span></td>
-<td>Block size (&lt; <span class="math inline">\(v\)</span>)</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(r\)</span></td>
-<td>Replications per treatment</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\lambda\)</span></td>
-<td>Pairs appearing together per block</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Efficiency</strong> = <span class="math inline">\(\frac{\lambda v}{rk}\)</span> (&lt; 1, relative to RCBD)</p>
-</div><div class="column" style="width:45%;">
-<p><strong>Generate with FielDHub:</strong></p>
+</div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href></a>bibd <span class="ot">&lt;-</span> FielDHub<span class="sc">::</span><span class="fu">design.bib</span>(</span>
-<span id="cb17-2"><a href></a>  <span class="at">trt =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>,</span>
-<span id="cb17-3"><a href></a>  <span class="at">b   =</span> <span class="dv">7</span>,  <span class="co"># blocks</span></span>
-<span id="cb17-4"><a href></a>  <span class="at">k   =</span> <span class="dv">3</span>   <span class="co"># block size</span></span>
-<span id="cb17-5"><a href></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href></a><span class="co"># Compare models with AIC/BIC</span></span>
+<span id="cb17-2"><a href></a><span class="fu">bind_rows</span>(</span>
+<span id="cb17-3"><a href></a>  asremlPlus<span class="sc">::</span><span class="fu">infoCriteria</span>(m_id),</span>
+<span id="cb17-4"><a href></a>  asremlPlus<span class="sc">::</span><span class="fu">infoCriteria</span>(m_cs),</span>
+<span id="cb17-5"><a href></a>  asremlPlus<span class="sc">::</span><span class="fu">infoCriteria</span>(m_ar1)</span>
+<span id="cb17-6"><a href></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;   fixedDF varDF NBound      AIC      BIC    loglik
+#&gt; 1       0     1      0 420.8836 422.9779 -209.4418
+#&gt; 2       0     2      0 397.7535 401.9422 -196.8768
+#&gt; 3       0     6      1 364.7580 377.3241 -176.3790</code></pre>
 </div>
-<p><strong>Analyze with <code>lme4</code>:</strong></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href></a>m_bibd <span class="ot">&lt;-</span> <span class="fu">lmer</span>(</span>
-<span id="cb18-2"><a href></a>  y <span class="sc">~</span> trt <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> block),</span>
-<span id="cb18-3"><a href></a>  <span class="at">data =</span> bibd_data</span>
-<span id="cb18-4"><a href></a>)</span>
-<span id="cb18-5"><a href></a><span class="fu">emmeans</span>(m_bibd, <span class="sc">~</span> trt) <span class="sc">|&gt;</span></span>
-<span id="cb18-6"><a href></a>  <span class="fu">pairs</span>(<span class="at">adjust =</span> <span class="st">&quot;tukey&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href></a><span class="fu">lrt</span>(m_id, m_cs)  <span class="co"># CS better than independent</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Likelihood ratio test(s) assuming nested random models.
+#&gt; (See Self &amp; Liang, 1987)
+#&gt; 
+#&gt;           df LR-statistic Pr(Chisq)    
+#&gt; m_cs/m_id  1        25.13  2.68e-07 ***
+#&gt; ---
+#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
 </div>
 </div></div>
-</section><section class="slide level2 center" style="font-size: 0.85em;"><h2>Exam II: Key Skills Checklist</h2>
+</section><section class="slide level2 center" style="font-size: 0.7em;"><h2>Exam II: Key Skills Checklist</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Step 1 — Identify the design:</strong></p>
 <p>☐ How many factors? Are any hard to change?<br>
 ☐ Factorial → one error term<br>
 ☐ Split-plot → two error strata<br>
-☐ Strip-plot → three error strata<br>
-☐ All treatments in every block? → Complete<br>
-☐ Block size &lt; treatments? → Incomplete (BIBD)</p>
+☐ Strip-plot → three error strata<br></p>
 <p><strong>Step 2 — Write the model:</strong></p>
 <p>☐ List all fixed effects<br>
-☐ List all random effects (block, WP error)<br>
-☐ Identify the correct denominator for each F-test</p>
+☐ List all random effects (e.g.,WP error)<br>
+☐ Identify the correct denominator for each F-test ☐ ANOVA vs mixed-model approach</p>
 </div><div class="column" style="width:50%;">
 <p><strong>Step 3 — Fit in R:</strong></p>
 <p>☐ Factorial: <code>lm() + car::Anova(type=&quot;III&quot;)</code><br>
@@ -2119,10 +2027,14 @@ Is it a random draw from a larger group? → Random.</p>
 <p>☐ Check interaction first<br>
 ☐ If interaction significant → simple effects only<br>
 ☐ Report variance components for random effects<br>
-☐ EMMs + Tukey for significant effects</p>
+☐ Adjusted means + Tukey for significant effects</p>
 </div></div>
-<div class="callout-success">
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
 <p><strong>If in doubt</strong>: trace back to <strong>randomization</strong>. How were treatments assigned? At what level? → That determines the error term.</p>
+</div>
+</div>
 </div>
 
 </section></section>
